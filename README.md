@@ -18,7 +18,7 @@ En la primera parte nos enfocamos en poner en marcha las funciones básicas:
 - Estructuramiento de objetos
 - Base de productos y funcionamiento
 
-### :card_file_box: Diagrama UML
+### :card_file_box: Diagrama UML fase 1
 
 ```mermaid
 classDiagram
@@ -57,7 +57,7 @@ classDiagram
     Inventario --> Registro : 
 ```
 
-### 🛠 Estructura de archivos
+### 🛠 Estructura de archivos fase 1
 
 ```plaintext
 📦 StockMaster/
@@ -69,11 +69,9 @@ classDiagram
 |
 │── 📂 services/                  # Lógica de negocio
 |  |── 📌 inventory_service.py    # Manejo de inventario, registros y persistencia
-|           # Archivo para almacenar los movimientos de inventario
-            # Documentación del proyecto
 ```
 
-##resultados fase 1
+### :sparkles: Resultados fase 1
 Podemos observar una interfaz rudimentaria de interacción con el usuario
 ```python
 StockMaster
@@ -120,7 +118,73 @@ Para la segunda fase, comenzamos por agregar el sistema de autenticación con co
 Adicional a esto hemos ejecutado el almacenamiento de elementos en formatos json asi mismo como su modificación.
 
 Igualmente se crea la interfaz de usuario para navegar a través de las funcionalidades previas.
-##Estructura actualizada
+### :card_file_box: Diagrama UML fase 2
+```mermaid
+classDiagram
+direction TB
+    class Producto {
+        - id_producto: str
+        - nombre: str
+        - precio: float
+        - cantidad: int
+        + __init__(id_producto, nombre, categoria, precio, cantidad)
+        + to_dict() dict
+        + from_dict(data: dict) Producto
+    }
+
+    class Registro {
+        - id_registro: int
+        - id_producto: str
+        - cantidad: int
+        - tipo: str
+        - fecha: str
+        + __init__(id_registro, id_producto, cantidad, tipo, fecha)
+        + to_dict() dict
+    }
+
+    class Inventario {
+        - productos: list~Producto~
+        - registros: list~Registro~
+        + __init__()
+        + agregar_producto(id_producto, nombre, precio, cantidad) "Crea registro automáticamente"
+        + registrar_entrada(id_producto, cantidad) "Crea registro automáticamente"
+        + registrar_salida(id_producto, cantidad) "Crea registro automáticamente"
+        + listar_inventario()
+        + buscar_producto(id_producto) Producto
+    }
+
+    class Usuario {
+        - cuenta: str
+        - Contraseña: str
+        - rol: str
+        + __init__(cuenta, contraseña, rol)
+        + to_dict() dict
+        + cargar_usuarios(usuarios.json)
+        + login(cuenta,contraseña,rol)
+    }
+
+    class inventario.json {
+        - Productos: diccionary
+    }
+
+    class usuarios.json {
+        - usuarios: diccionary
+    }
+
+    class registros.json {
+        - registros: diccionary
+    }
+
+    Inventario --> Producto : "1..*"
+    Inventario --> Registro : "1..*"
+    Usuario --> Inventario : "2..*"
+    inventario.json --> Inventario : "2..*"
+    usuarios.json --> Usuario : "2..*"
+    registros.json --> Registro : "2..*"
+
+```
+
+### 🛠 Estructura de archivos fase 2
 ```plaintext
 📦 StockMaster/
 |── 📌 main.py                    # Punto de entrada del programa
@@ -128,15 +192,13 @@ Igualmente se crea la interfaz de usuario para navegar a través de las funciona
 │── 📂 models/                    # Clases principales del proyecto
 |  |── 📌 product.py              # Clase Producto: representa los productos del inventario
 |  |── 📌 records.py              # Clase Registro: representa los movimientos (entradas/salidas)
-|  |── 📌 Users.py              # Clase Registro: representa los movimientos (entradas/salidas)
+|  |── 📌 Users.py                # Clase Registro: representa los movimientos (entradas/salidas)
 |
 │── 📂 services/                  # Lógica de negocio
 |  |── 📌 inventory_service.py    # Manejo de inventario, registros y persistencia
-|           # Archivo para almacenar los movimientos de inventario
-            # Documentación del proyecto
-│── 📄 inventory.json              # Archivo para almacenar los datos de los productos
+│── 📄 inventory.json             # Archivo para almacenar los datos de los productos
 │── 📄 records.json               # Archivo para almacenar los movimientos de inventario
-│── 📄 usuarios.json               # Archivo para almacenar los usuarios registrados con sus contraseñas
+│── 📄 usuarios.json              # Archivo para almacenar los usuarios registrados con sus contraseñas
 
 ```
 ### 💡 Ejemplo
@@ -189,7 +251,7 @@ Name:
 ```
 La información coincide con la base de datos de seguridad y el jefe pudo ingresar al sistema. Allí logra entrar a lo que se evidenció en la fase 1.
 
-##registros en los json
+registros en los json
 inventario.json
 ```python
 {
@@ -287,7 +349,7 @@ Cabe resaltar que este se actualiza según las acciones hechas en el sistema
 }
 ```
 
-## 🌟 Integrantes  
+### 🌟 Integrantes  
 - 📱 Amaya Gómez Ana María
 - 🏭 Daza Yepes Santiago
 - 🤖 Torres Zaque Julian Ricardo
