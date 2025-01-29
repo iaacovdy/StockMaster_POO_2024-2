@@ -91,7 +91,7 @@ Product added successfully
 ```
 ahora exploramos la muestra de elementos
 ```python
-tockMaster
+StockMaster
 1. Add product
 2. Show products
 3. Search product
