@@ -69,18 +69,76 @@ classDiagram
 |
 │── 📂 services/                  # Lógica de negocio
 |  |── 📌 inventory_service.py    # Manejo de inventario, registros y persistencia
-|
-│── 📄 products.json              # Archivo para almacenar los datos de los productos
-│── 📄 records.json               # Archivo para almacenar los movimientos de inventario
-│
-│── 📄 README.md                  # Documentación del proyecto
+|           # Archivo para almacenar los movimientos de inventario
+            # Documentación del proyecto
 ```
 
-## :construction: Fase 2
+##resultados fase 1
+Podemos observar una interfaz rudimentaria de interacción con el usuario
+```python
+StockMaster
+1. Add product
+2. Show products
+3. Search product
+4. Change stock
+5. Update product
+6. Delete product
+7. Exit
+Select an option: 1
+Enter product id: 12
+Enter product name: charger
+Enter product price: 123
+Enter product stock: 7
+Product added successfully
+```
+ahora exploramos la muestra de elementos
+```python
+tockMaster
+1. Add product
+2. Show products
+3. Search product
+4. Change stock
+5. Update product
+6. Delete product
+7. Exit
+Select an option: 2
+Products in inventory
+Id:12 - Name:charger - Price: 123.0 - Stock: 7
+StockMaster
+1. Add product
+2. Show products
+3. Search product
+4. Change stock
+5. Update product
+6. Delete product
+7. Exit
+Select an option:            
+```
+como se puede apreciar el elemento nuevo fue creado con éxito 
+# :construction: Fase 2
 Para la segunda fase, comenzamos por agregar el sistema de autenticación con contraseña.
+Adicional a esto hemos ejecutado el almacenamiento de elementos en formatos json asi mismo como su modificación.
 
 Igualmente se crea la interfaz de usuario para navegar a través de las funcionalidades previas.
+##Estructura actualizada
+```plaintext
+📦 StockMaster/
+|── 📌 main.py                    # Punto de entrada del programa
+|
+│── 📂 models/                    # Clases principales del proyecto
+|  |── 📌 product.py              # Clase Producto: representa los productos del inventario
+|  |── 📌 records.py              # Clase Registro: representa los movimientos (entradas/salidas)
+|  |── 📌 Users.py              # Clase Registro: representa los movimientos (entradas/salidas)
+|
+│── 📂 services/                  # Lógica de negocio
+|  |── 📌 inventory_service.py    # Manejo de inventario, registros y persistencia
+|           # Archivo para almacenar los movimientos de inventario
+            # Documentación del proyecto
+│── 📄 inventory.json              # Archivo para almacenar los datos de los productos
+│── 📄 records.json               # Archivo para almacenar los movimientos de inventario
+│── 📄 usuarios.json               # Archivo para almacenar los usuarios registrados con sus contraseñas
 
+```
 ### 💡 Ejemplo
 La primera interacción con el usuario es el ingreso al sistema:
 ```python
@@ -130,6 +188,104 @@ Name:
 
 ```
 La información coincide con la base de datos de seguridad y el jefe pudo ingresar al sistema. Allí logra entrar a lo que se evidenció en la fase 1.
+
+##registros en los json
+inventario.json
+```python
+{
+    "Productos": [
+        {
+            "id": 1,
+            "name": "Laptop",
+            "price": 1200,
+            "stock": 5
+        },
+        {
+            "id": 2,
+            "name": "Smartphone",
+            "price": 800,
+            "stock": 10
+        },
+        {
+            "id": 3,
+            "name": "Tablet",
+            "price": 450,
+            "stock": 8
+        },
+...
+        {
+            "id": 23,
+            "name": "Headphones",
+            "price": 250,
+            "stock": 15
+        }
+    ]
+}
+```
+usuarios.json
+```python
+{
+    "Usuarios": [
+        {
+            "account": "Felipe Gonzalez",
+            "Password": "0000",
+            "role": "Boss"
+        },
+        {
+            "account": "Santiago Daza",
+            "Password": "0001",
+            "role": "Administrative"
+        },
+        {
+            "account": "Julian Torres",
+            "Password": "0002",
+            "role": "employee"
+        },
+        {
+            "account": "Ana Amaya",
+            "Password": "0003",
+            "role": "employee"
+        }
+        
+    ]
+}
+```
+registros.json
+Cabe resaltar que este se actualiza según las acciones hechas en el sistema
+```python
+{
+    "Registros": [
+        {
+            "Record_id": 1,
+            "Product_id": 64,
+            "Amount": 1,
+            "Movement": "add",
+            "Date": "2025-01-29"
+        },
+        {
+            "Record_id": 2,
+            "Product_id": 24,
+            "Amount": 1,
+            "Movement": "removed",
+            "Date": "2025-01-29"
+        },
+        {
+            "Record_id": 3,
+            "Product_id": 28,
+            "Amount": 1,
+            "Movement": "removed",
+            "Date": "2025-01-29"
+        },
+        {
+            "Record_id": 4,
+            "Product_id": 64,
+            "Amount": 1,
+            "Movement": "removed",
+            "Date": "2025-01-29"
+        }
+    ]
+}
+```
 
 ## 🌟 Integrantes  
 - 📱 Amaya Gómez Ana María
