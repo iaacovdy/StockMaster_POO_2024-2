@@ -1,3 +1,4 @@
+##Universidad nacional e informacion del curso***
 ![By (Doc Banner)](https://github.com/user-attachments/assets/849f0868-f4eb-493d-b6d7-1d115af4b103)
 
 > Sistema de gestión de inventario para una tienda de productos y componentes electrónicos, propuesto como proyecto final para la asignatura POO
@@ -8,6 +9,8 @@
 - ✅ Carga masiva de datos desde una base .json
 - ✅ Mostrar el inventario actualizado en cualquier momento
 - ✅ Consulta detallada de cada operación (fecha, hora, usuario)
+#Fase 1
+carreta de la fase 1
 
 ## 🏗 Diagrama UML
 
@@ -67,6 +70,60 @@ classDiagram
 │
 │── 📄 README.md                  # Documentación del proyecto
 ```
+
+##resultados fase 1
+aqui deberíamos poner evidencias de como funciona la consola. lo que hizo julian
+
+#Fase 2
+##resultados fase 2
+La primera interacción con el usuario es el ingreso al sistema
+```python
+Welcome to StockMaster
+Please login
+Name: juanito perez
+Password: 1144
+Role: employee
+Cuenta no existente.
+```
+juanito perez no es un trabajador de la empresa ni está registrado en el sistema
+
+```python
+Welcome to StockMaster
+Please login
+Name: Felipe Gonzalez
+Password: 0000
+Role: Employee
+Información inválida. Por favor, verifique.
+```
+Felipe Gonzalez está en el sistema pero su ingreso no correponde con los datos regitrados en la base de seguridad.
+```python
+Welcome to StockMaster
+Please login
+Name: Felipe Gonzalez
+Password: 0000
+Role: Boss
+Login exitoso
+
+Welcome to our sistem. Select an option:
+1. Add product
+2. Show products
+3. Search product
+4. Change stock
+5. Update product
+6. Delete product
+7. Exit
+Select an option: 1
+Enter product id: 1000
+Enter product name: Digital Camera
+Enter product price: 2800
+Enter product stock: 3
+Product added successfully
+Welcome to StockMaster
+Please login
+Name:
+
+```
+La información coincide con la base de datos de seguridad y el Jefe pudo ingresar al sistema. allí logra entrar a lo que se evidenció en la fase 1
 
 ## 🌟 Integrantes  
 - 📱 Amaya Gómez Ana María
