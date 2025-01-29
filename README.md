@@ -1,8 +1,8 @@
-# STOCKMASTER
+![By (Doc Banner)](https://github.com/user-attachments/assets/849f0868-f4eb-493d-b6d7-1d115af4b103)
 
-> Sistema de gestión de inventario para una tienda de partes
+> Sistema de gestión de inventario para una tienda de productos y componentes electrónicos, propuesto como proyecto final para la asignatura POO
 
-![17380018574834354944134882249663](https://github.com/user-attachments/assets/d990cc76-3d9f-4bf7-8256-40f8064af77e)
+
 
 ## 🚀 Funcionalidades propuestas
 - ✅ Carga masiva de datos desde una base .json
