@@ -1,18 +1,24 @@
-##Universidad nacional e informacion del curso***
 ![By (Doc Banner)](https://github.com/user-attachments/assets/849f0868-f4eb-493d-b6d7-1d115af4b103)
 
-> Sistema de gestión de inventario para una tienda de productos y componentes electrónicos, propuesto como proyecto final para la asignatura POO
+# UNIVERSIDAD NACIONAL DE COLOMBIA
+# Programación Orientada a Objetos 2024-II
 
+> Sistema de gestión de inventario para una tienda de productos y componentes electrónicos.
 
-
-## 🚀 Funcionalidades propuestas
+# 🚀 Funcionalidades propuestas
 - ✅ Carga masiva de datos desde una base .json
 - ✅ Mostrar el inventario actualizado en cualquier momento
+- ✅ Login de usuarios protegido por contraseña
 - ✅ Consulta detallada de cada operación (fecha, hora, usuario)
-#Fase 1
-carreta de la fase 1
+- ✅ Interfaz simple para navegar las distintas opciones
 
-## 🏗 Diagrama UML
+## 🏗 Fase 1
+En la primera parte nos enfocamos en poner en marcha las funciones básicas:
+- Manejo de inventario
+- Estructuramiento de objetos
+- Base de productos y funcionamiento
+
+### :card_file_box: Diagrama UML
 
 ```mermaid
 classDiagram
@@ -51,8 +57,7 @@ classDiagram
     Inventario --> Registro : 
 ```
 
-
-## 🛠 Estructura de archivos
+### 🛠 Estructura de archivos
 
 ```plaintext
 📦 StockMaster/
@@ -71,21 +76,22 @@ classDiagram
 │── 📄 README.md                  # Documentación del proyecto
 ```
 
-##resultados fase 1
-aqui deberíamos poner evidencias de como funciona la consola. lo que hizo julian
+## :construction: Fase 2
+Para la segunda fase, comenzamos por agregar el sistema de autenticación con contraseña.
 
-#Fase 2
-##resultados fase 2
-La primera interacción con el usuario es el ingreso al sistema
+Igualmente se crea la interfaz de usuario para navegar a través de las funcionalidades previas.
+
+### 💡 Ejemplo
+La primera interacción con el usuario es el ingreso al sistema:
 ```python
 Welcome to StockMaster
 Please login
-Name: juanito perez
+Name: Juanito Perez
 Password: 1144
 Role: employee
 Cuenta no existente.
 ```
-juanito perez no es un trabajador de la empresa ni está registrado en el sistema
+Juanito Perez no es un trabajador de la empresa ni está registrado en el sistema
 
 ```python
 Welcome to StockMaster
@@ -104,7 +110,7 @@ Password: 0000
 Role: Boss
 Login exitoso
 
-Welcome to our sistem. Select an option:
+Welcome to our system. Select an option:
 1. Add product
 2. Show products
 3. Search product
@@ -123,7 +129,7 @@ Please login
 Name:
 
 ```
-La información coincide con la base de datos de seguridad y el Jefe pudo ingresar al sistema. allí logra entrar a lo que se evidenció en la fase 1
+La información coincide con la base de datos de seguridad y el jefe pudo ingresar al sistema. Allí logra entrar a lo que se evidenció en la fase 1.
 
 ## 🌟 Integrantes  
 - 📱 Amaya Gómez Ana María
