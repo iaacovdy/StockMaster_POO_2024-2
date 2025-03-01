@@ -1,23 +1,23 @@
 {
-    "Usuarios": [
+    "Users": [
         {
             "account": "Felipe Gonzalez",
-            "Password": "0000",
+            "password": "0000",
             "role": "Boss"
         },
         {
             "account": "Santiago Daza",
-            "Password": "0001",
+            "password": "0001",
             "role": "Administrative"
         },
         {
             "account": "Julian Torres",
-            "Password": "0002",
+            "password": "0002",
             "role": "employee"
         },
         {
             "account": "Ana Amaya",
-            "Password": "0003",
+            "password": "0003",
             "role": "employee"
         }
         

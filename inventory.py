@@ -1,9 +1,32 @@
-from Product import Product
-
 import json
 
+INVENTORY_JSON_PATH = 'data/inventory.json'
+
+class Product():
+    def __init__(self, id: int, name: str, price: float, stock: int) -> None:
+        self.id = id
+        self.name = name
+        self.price = price
+        self.stock = stock
+
+    def __str__(self):
+        return (
+        f'Id: {self.id}\n'
+        f'    Name: {self.name}\n'
+        f'    Price: ${self.price}\n'
+        f'    Stock: {self.stock}')
+    
+    def product_to_dict(self) -> dict:
+        return {
+            'id': self.id,
+            'name': self.name,
+            'price': self.price,
+            'stock': self.stock
+        }
+
+
 class Inventory():
-    def __init__(self, json_file='inventario.json'):    # Le ingresa el archivo JSON al constructor
+    def __init__(self, json_file=INVENTORY_JSON_PATH):    # Le ingresa el archivo JSON al constructor
         self.products = {}  # Diccionario de productos
         self.json_file = json_file
         self.load_inventory()   # Carga el inventario desde el archivo JSON
@@ -13,18 +36,18 @@ class Inventory():
         try:
             with open(self.json_file, 'r') as file:
                 data = json.load(file)
-                for item in data['Productos']:
+                for item in data['Products']:
                     product = Product(**item)
                     self.products[product.id] = product
         except FileNotFoundError:
-            print("El archivo JSON no se encontró, iniciando con un inventario vacío.")
+            print("The JSON file was not found, starting with an empty inventory.")
 
             
     # Guardar inventario a JSON
     def save_inventory(self):
         with open(self.json_file, 'w') as file: # Abre el archivo en modo escritura
             # Crea un diccionario con los productos
-            data = {'Productos': [product.product_to_dict() for product in self.products.values()]}
+            data = {'Products': [product.product_to_dict() for product in self.products.values()]}
             json.dump(data, file, indent=4)   # Escribe el diccionario en el archivo JSON
 
     # Agrega productos al inventario
