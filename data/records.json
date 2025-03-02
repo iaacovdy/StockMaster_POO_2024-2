@@ -1,44 +1,10 @@
 {
     "Records": [
         {
-            "Record_id": 1,
-            "Product_id": 64,
-            "Amount": 1,
-            "Movement": "add",
-            "Date": "2025-01-29"
-        },
-        {
-            "Record_id": 2,
-            "Product_id": 24,
-            "Amount": 1,
-            "Movement": "removed",
-            "Date": "2025-01-29"
-        },
-        {
-            "Record_id": 3,
-            "Product_id": 28,
-            "Amount": 1,
-            "Movement": "removed",
-            "Date": "2025-01-29"
-        },
-        {
-            "Record_id": 4,
-            "Product_id": 64,
-            "Amount": 1,
-            "Movement": "removed",
-            "Date": "2025-01-29"
-        },
-        {
-            "Record_id": 5,
-            "Product_id": 1,
-            "Amount": 5,
-            "Movement": "Stock Changed",
-            "Date": "2025-03-01"
-        },
-        {
-            "record_id": 6,
+            "record_id": 1,
             "product_id": 1,
-            "amount": 19,
+            "name": "Laptop",
+            "amount": 7,
             "movement": "Stock Changed",
             "date": "2025-03-01"
         }

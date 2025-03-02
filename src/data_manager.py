@@ -78,7 +78,6 @@ class User(JSONHandler):
                     print("Successful login")
                     return True
             else:
-                print("Invalid information")
                 return False
         print("Account does not exist")
         return False
@@ -86,10 +85,11 @@ class User(JSONHandler):
 
 # Clase para manejar los registros
 class Record(JSONHandler):
-    def __init__(self, record_id, id, amount, movement):
+    def __init__(self, record_id, id, name, amount, movement):
         now = datetime.now()                    # Obtiene la fecha y hora actual
         self.record_id = record_id              # ID del registro
         self.product_id = id                    # ID del producto
+        self.name = name                        # Nombre del producto
         self.amount = amount                    # Cantidad
         self.movement = movement                # Movimiento
         self.date = now.strftime("%Y-%m-%d")    # Fecha
@@ -99,6 +99,7 @@ class Record(JSONHandler):
         return {
             'record_id': self.record_id,
             'product_id': self.product_id,
+            'name': self.name,
             'amount': self.amount,
             'movement': self.movement,
             'date': self.date
@@ -121,9 +122,9 @@ class Record(JSONHandler):
 
     # Método para agregar un registro al archivo JSON
     @classmethod
-    def add_record_to_json(cls, product_id, amount, movement, json_file):
+    def add_record_to_json(cls, product_id, name, amount, movement, json_file):
         next_id = cls.get_next_id(json_file)    # Obtiene el siguiente ID
-        record = Record(next_id, product_id, amount, movement)  # Crea un registro
+        record = Record(next_id, product_id, name, amount, movement)  # Crea un registro
         data = cls.load_from_json(json_file, 'Records') or {'Records': []}   # Carga los datos
         data['Records'].append(record.to_dict())    # Agrega el registro a la lista
         cls.save_to_json(data, json_file)   # Guarda los datos

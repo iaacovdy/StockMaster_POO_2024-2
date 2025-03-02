@@ -50,7 +50,7 @@ def main():
                 stock = int(input('Enter product stock: '))
                 product = Product(id, name, price, stock)
                 inventory.add_product(product)
-                Record.add_record_to_json(id, stock, 'added', json_file=RECORDS_JSON_PATH)
+                Record.add_record_to_json(id, name, name, stock, 'added', json_file=RECORDS_JSON_PATH)
 
             case '2':  # Mostrar productos
                 inventory.show_products()
@@ -62,8 +62,9 @@ def main():
             case '4':   # Cambiar stock
                 id = int(input('Enter product id: '))
                 stock = int(input('Enter the value to adjust the stock: '))
+                name_4 = inventory.products[id].name
                 inventory.change_stock(id, stock)
-                Record.add_record_to_json(id, stock, 'Stock Changed', json_file=RECORDS_JSON_PATH)
+                Record.add_record_to_json(id, name_4, stock, 'Stock Changed', json_file=RECORDS_JSON_PATH)
 
             case '5':   # Actualizar producto
                 id = int(input('Enter product id: '))
@@ -71,12 +72,12 @@ def main():
                 price = float(input('Enter product price: '))
                 stock = int(input('Enter product stock: '))
                 inventory.update_product(id, name, price, stock)
-                Record.add_record_to_json(id, stock, 'updated', json_file=RECORDS_JSON_PATH)
+                Record.add_record_to_json(id, name, stock, 'updated', json_file=RECORDS_JSON_PATH)
 
             case '6':   # Eliminar producto
                 id = int(input('Enter product id: '))
                 inventory.delete_product(id)
-                Record.add_record_to_json(id, stock, 'removed', json_file=RECORDS_JSON_PATH)
+                Record.add_record_to_json(id, name, stock, 'removed', json_file=RECORDS_JSON_PATH)
 
             case '7':   # Salir del programa
                 print("Exiting the program...")
