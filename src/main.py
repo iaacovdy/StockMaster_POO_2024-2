@@ -11,7 +11,7 @@ RECORDS_JSON_PATH = f'{DATA_DIR}/records.json'   # Archivo JSON para los registr
 # Función para obtener las credenciales del usuario
 def get_user_credentials():
     print("\nPlease login")
-    account = input('  Name: ')
+    account = input('  User: ')
     password = getpass('  Password: ')  # Oculta la contraseña
     role = input('  Role: ')
     
