@@ -2,12 +2,13 @@ import json
 
 INVENTORY_JSON_PATH = 'data/inventory.json'
 
+# Clase para manejar los productos
 class Product():
     def __init__(self, id: int, name: str, price: float, stock: int) -> None:
-        self.id = id
-        self.name = name
-        self.price = price
-        self.stock = stock
+        self.id = id            # Identificador del producto
+        self.name = name        # Nombre del producto
+        self.price = price      # Precio del producto
+        self.stock = stock      # Stock del producto
 
     def __str__(self):
         return (
@@ -16,7 +17,8 @@ class Product():
         f'    Price: ${self.price}\n'
         f'    Stock: {self.stock}')
     
-    def product_to_dict(self) -> dict:
+    # Convierte el producto a un diccionario
+    def product_to_dict(self) -> dict:  
         return {
             'id': self.id,
             'name': self.name,
@@ -25,6 +27,7 @@ class Product():
         }
 
 
+# Clase para manejar el inventario
 class Inventory():
     def __init__(self, json_file=INVENTORY_JSON_PATH):    # Le ingresa el archivo JSON al constructor
         self.products = {}  # Diccionario de productos

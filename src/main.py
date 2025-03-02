@@ -1,5 +1,5 @@
-from inventory import Inventory, Product
-from json_manager import Record, User
+from src.inventory import Inventory, Product
+from src.data_manager import Record, User
 
 from getpass import getpass     # Oculta la contraseña
 

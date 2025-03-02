@@ -6,11 +6,11 @@ from datetime import datetime
 class JSONHandler:
     # Método para cargar datos
     @classmethod
-    def load_from_json(cls, json_file):
+    def load_from_json(cls, json_file, data_name: str):
         try:
             with open(json_file, 'r') as file:  # Abre el archivo en modo lectura
                 data = json.load(file)  # Carga los datos del archivo JSON
-                print(f"Data successfully loaded from '{json_file}'")
+                print(f"Data successfully loaded from '{json_file} | {data_name}'")
                 return data     # Retorna los datos cargados
         except FileNotFoundError:   # Captura la excepción si el archivo no se encuentra
             print(f"Error: File '{json_file}' does not exist")
@@ -54,7 +54,7 @@ class User(JSONHandler):
     # Método para cargar los usuarios
     @classmethod
     def load_users(cls, json_file: str):
-        data = cls.load_from_json(json_file)    # Carga los datos
+        data = cls.load_from_json(json_file, 'Users')    # Carga los datos
         if data:    # Si hay datos
             cls.users = [   # Crea una lista de usuarios
                 User(user_data['account'], user_data['password'], user_data['role'])
@@ -77,9 +77,9 @@ class User(JSONHandler):
                 if user.password == password and user.role == role: # Verifica las credenciales
                     print("Successful login")
                     return True
-                else:
-                    print("Invalid information")
-                    return False
+            else:
+                print("Invalid information")
+                return False
         print("Account does not exist")
         return False
 
@@ -114,7 +114,7 @@ class Record(JSONHandler):
     # Método para obtener el siguiente ID
     @classmethod
     def get_next_id(cls, json_file):
-        data = cls.load_from_json(json_file)    # Carga los datos
+        data = cls.load_from_json(json_file, 'Records')    # Carga los datos
         if data and data['Records']:    
             return data['Records'][-1]['Record_id'] + 1
         return 1
@@ -124,6 +124,6 @@ class Record(JSONHandler):
     def add_record_to_json(cls, product_id, amount, movement, json_file):
         next_id = cls.get_next_id(json_file)    # Obtiene el siguiente ID
         record = Record(next_id, product_id, amount, movement)  # Crea un registro
-        data = cls.load_from_json(json_file) or {'Records': []}   # Carga los datos
+        data = cls.load_from_json(json_file, 'Records') or {'Records': []}   # Carga los datos
         data['Records'].append(record.to_dict())    # Agrega el registro a la lista
         cls.save_to_json(data, json_file)   # Guarda los datos
